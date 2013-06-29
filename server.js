@@ -1,0 +1,11 @@
+var express = require('express');
+var db = require('./db');
+var download = require('./download');
+var app = module.exports = express();
+app.get('/barcode/:barCode', db.findByBarcode);
+app.get('/productname/:productName', db.findByProductName);
+app.get('/productid/:id', db.findById);
+app.get('/image/:filename', download.findByImagePath);
+app.get('/obj/:filename', download.findByObjPath);
+app.listen(80);
+console.log('Running server on port 80');
